@@ -85,7 +85,7 @@
       {
         "type": "cheez",
         "label": "Cheez",
-        "program": "D:/dev/CheezLang/gen/cheezdb.exe",
+        "program": "cheezdb.exe",
         "languages": [
           "cheezlang"
         ],
