@@ -7,6 +7,7 @@
 import * as net from 'net';
 import * as vscode from 'vscode';
 import { LanguageClient, LanguageClientOptions, ServerOptions, StreamInfo } from 'vscode-languageclient';
+import * as process from 'process';
 
 
 export function activate(context: vscode.ExtensionContext) {
@@ -26,9 +27,13 @@ export function activate(context: vscode.ExtensionContext) {
             return;
         }
 
+        const pid = process.pid;
+
+        vscode.window.showInformationMessage("vscode process '" + pid + "'");
+
         serverOptions = {
-            run: { command: serverCommand, args: ["--language-server-console", "dummy.che"] },
-            debug: { command: serverCommand, args: ["--language-server-console", "dummy.che"] }
+            run: { command: serverCommand, args: ["--language-server-console", "--parent-pid", "" + pid, "dummy.che"] },
+            debug: { command: serverCommand, args: ["--language-server-console", "--parent-pid", "" + pid, "dummy.che"] }
         };
     }
     else

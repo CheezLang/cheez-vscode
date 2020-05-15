@@ -7,6 +7,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const net = require("net");
 const vscode = require("vscode");
 const vscode_languageclient_1 = require("vscode-languageclient");
+const process = require("process");
 function activate(context) {
     const serverCommand = vscode.workspace.getConfiguration().get('cheez.languageServerPath');
     const debugPort = vscode.workspace.getConfiguration().get('cheez.languageServerPort');
@@ -19,9 +20,11 @@ function activate(context) {
             vscode.window.showErrorMessage("Cheez language server location was not specified. Please configure the path to the language server executable under 'cheez.languageServerPath', then restart Visual Studio Code");
             return;
         }
+        const pid = process.pid;
+        vscode.window.showInformationMessage("vscode process '" + pid + "'");
         serverOptions = {
-            run: { command: serverCommand, args: ["--language-server-console", "dummy.che"] },
-            debug: { command: serverCommand, args: ["--language-server-console", "dummy.che"] }
+            run: { command: serverCommand, args: ["--language-server-console", "--parent-pid", "" + pid, "dummy.che"] },
+            debug: { command: serverCommand, args: ["--language-server-console", "--parent-pid", "" + pid, "dummy.che"] }
         };
     }
     else {
