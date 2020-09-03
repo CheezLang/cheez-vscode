@@ -31,11 +31,23 @@
           ".che"
         ],
         "configuration": "./language-configuration.json"
+      },
+      {
+        "id": "cheezlang2",
+        "extensions": [
+          ".cheez"
+        ],
+        "configuration": "./language-configuration.json"
       }
     ],
     "grammars": [
       {
         "language": "cheezlang",
+        "scopeName": "source.cheezlang",
+        "path": "./syntaxes/cheezlang.tmLanguage.json"
+      },
+      {
+        "language": "cheezlang2",
         "scopeName": "source.cheezlang",
         "path": "./syntaxes/cheezlang.tmLanguage.json"
       }
@@ -86,8 +98,9 @@
         "type": "cheez",
         "label": "Cheez",
         "program": "./cheezdb.exe",
+        "adapterExecutableCommand": "csharp.coreclrAdapterExecutableCommand",
         "languages": [
-          "cheezlang"
+          "cheezlang2"
         ],
         "initialConfigurations": [
           {
@@ -101,7 +114,7 @@
     ],
     "breakpoints": [
       {
-        "language": "cheezlang"
+        "language": "cheezlang2"
       }
     ]
   },
