@@ -29,15 +29,11 @@
         },
         "core_types": {
             "name": "storage.type.cheezlang",
-            "match": "\\b(bool|char|char8|char16|char32|u8|u16|u32|u64|i8|i16|i32|i64|f32|f64|string|c_string|int|uint|float|double|void|Self|any|type)\\b"
-        },
-        "type_modifiers": {
-            "name": "storage.type.cheezlang",
-            "match": "\\b(mut|const)\\b"
+            "match": "\\b(bool|b8|b16|b32|b64|char|char8|char16|char32|u8|u16|u32|u64|i8|i16|i32|i64|f32|f64|string|c_string|int|uint|float|double|void|Self|any|type)\\b"
         },
         "modifiers": {
             "name": "keyword.modifier.cheezlang",
-            "match": "\\b(pub|const)\\b"
+            "match": "\\b(pub|mut|const)\\b"
         },
         "special_values": {
             "name": "variable.language.cheezlang",
@@ -105,11 +101,11 @@
         },
         "control_keywords": {
             "name": "keyword.control.cheezlang",
-            "match": "\\b(if|then|match|while|loop|return|continue|break|defer|else|in|is)\\b"
+            "match": "\\b(use|if|then|match|while|loop|return|continue|break|defer|else|in|is|for|do|import|cast)\\b"
         },
         "type_keywords": {
-            "name": "storage.type.cheezlang",
-            "match": "\\b(use|enum|struct|trait|impl|for|pub|do|import)\\b"
+            "name": "keyword.control.cheezlang",
+            "match": "\\b(enum|struct|trait|impl|fn|Fn)\\b"
         },
         "escaped_character": {
             "name": "constant.character.escape.cheezlang",
@@ -163,20 +159,12 @@
             "patterns": [
                 { "include": "#block_comment" },
                 { "include": "#line_comment" },
-                {
-                    "name": "storage.type.cheezlang",
-                    "match": "\\b(fn|Fn)\\b"
-                },
-                {
-                    "name": "keyword.other.cheezlang",
-                    "match": "\\b(cast)\\b"
-                },
                 { "include": "#core_types" },
                 { "include": "#control_keywords" },
                 { "include": "#type_keywords" },
                 { "include": "#special_values" },
                 { "include": "#literals" },
-                { "include": "#type_modifiers" },
+                { "include": "#modifiers" },
                 { "include": "#operators" },
                 { "include": "#parens" },
                 { "include": "#delimiters" },
